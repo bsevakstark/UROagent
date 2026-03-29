@@ -8,9 +8,9 @@ Dependencies: langchain, langchain-community, openai, faiss-cpu, tiktoken
 """
 
 import os
-from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 # ---------------------------------------------------------------------------
 # Mock AUA / NCCN Clinical Guideline Chunks
@@ -162,7 +162,7 @@ def build_vector_store():
     """Embed guideline chunks and persist a FAISS index to disk."""
     os.makedirs("data", exist_ok=True)
     print("🔨 Building FAISS vector store from AUA guidelines...")
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vectorstore = FAISS.from_documents(GUIDELINE_CHUNKS, embeddings)
     vectorstore.save_local("data/aua_guidelines_index")
     print(f"✅ Vector store saved to data/aua_guidelines_index")

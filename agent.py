@@ -22,8 +22,9 @@ and how many times — based purely on the user's question.
 
 import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
-from langchain.agents import AgentExecutor, create_react_agent
+from langchain_groq import ChatGroq
+from langchain.agents import create_react_agent
+from langchain.agents import AgentExecutor
 from langchain.prompts import PromptTemplate
 from langchain import hub
 
@@ -62,10 +63,10 @@ Respond in clear, professional clinical language suitable for a physician audien
 def build_agent() -> AgentExecutor:
     """Construct and return a LangChain ReAct AgentExecutor."""
 
-    llm = ChatOpenAI(
-        model="gpt-4o-mini",
-        temperature=0,          # deterministic for clinical use
-        openai_api_key=os.getenv("OPENAI_API_KEY"),
+    llm = ChatGroq(
+        model="llama-3.3-70b-versatile",
+        temperature=0,
+        groq_api_key=os.getenv("GROQ_API_KEY"),
     )
 
     tools = [query_ehr_database, query_aua_guidelines]

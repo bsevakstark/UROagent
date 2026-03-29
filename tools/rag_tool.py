@@ -9,7 +9,7 @@ import os
 from functools import lru_cache
 from langchain.tools import tool
 from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 INDEX_PATH = "data/aua_guidelines_index"
 TOP_K = 3
@@ -23,7 +23,7 @@ def _load_vectorstore() -> FAISS:
             f"FAISS index not found at '{INDEX_PATH}'. "
             "Please run `python setup_rag.py` first."
         )
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     return FAISS.load_local(
         INDEX_PATH,
         embeddings,
