@@ -1,0 +1,29 @@
+# UroAgent — Python dependencies
+# Install with: pip install -r requirements.txt
+
+# LangChain ecosystem
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.0
+langgraph>=0.1.0         # optional: for future graph-based workflows
+
+# LLM & Embeddings
+openai>=1.30.0
+
+# Vector store
+faiss-cpu>=1.8.0
+
+# Tokenisation (required by LangChain splitters)
+tiktoken>=0.7.0
+
+# Database
+# sqlite3 is included in the Python standard library
+
+# Web UI
+streamlit>=1.35.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# Utilities
+numpy>=1.26.0
