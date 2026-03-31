@@ -1,3 +1,11 @@
+import os
+if not os.path.exists("data/patient_records.db"):
+    import setup_db
+    setup_db.main()
+
+if not os.path.exists("data/aua_guidelines_index"):
+    import setup_rag
+    setup_rag.main()
 python - << 'PYEOF'
 with open('app.py', 'w') as f:
     f.write('''import os
