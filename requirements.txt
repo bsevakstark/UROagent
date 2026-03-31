@@ -8,7 +8,7 @@ langchain-openai>=0.1.0
 langgraph>=0.1.0         # optional: for future graph-based workflows
 
 # LLM & Embeddings
-openai>=1.30.0
+langchain-groq>=0.1.0
 
 # Vector store
 faiss-cpu>=1.8.0
